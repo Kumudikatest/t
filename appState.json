@@ -22,7 +22,7 @@
         "children": [],
         "isRemovable": true,
         "filePath": "t/lambda.js",
-        "code": "let AWS = require('aws-sdk');\n\nexports.handler = function (event, context, callback) {\n/////\n    callback(null, { \"message\": \"Successfully executed\" });\n}",
+        "code": "let AWS = require('aws-sdk');\n\nexports.handler = function (event, context, callback) {\n//\n    callback(null, { \"message\": \"Successfully executed\" });\n}",
         "triggers": [],
         "config": {
           "runtime": "nodejs8.10",
@@ -59,7 +59,7 @@
     "projectVersion": "1.0.0",
     "projectRegion": "us-east-1",
     "platform": "AWS",
-    "lastSave": 1541419622255
+    "lastSave": 1541420028870
   },
   "VCS_STATE": {
     "provider": "GitHub",
