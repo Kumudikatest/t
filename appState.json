@@ -1,43 +1,87 @@
 {
   "EDITOR_STATE": {
     "allProjectFiles": {
-      "bc290282-e7eb-404a-b640-97bf4e57d8a8": {
-        "id": "bc290282-e7eb-404a-b640-97bf4e57d8a8",
+      "d3549ce0-3b4e-4201-beb5-c4ee72b49895": {
+        "id": "d3549ce0-3b4e-4201-beb5-c4ee72b49895",
         "parent": null,
         "name": "t",
         "type": "DIRECTORY",
         "isDirectory": true,
         "children": [
-          "9df5159f-0641-42b1-8873-dd6ab94623d3"
+          "ac92a9c2-3091-4cf3-8e8e-d09467a95392"
         ],
         "isRemovable": false,
         "filePath": "t"
       },
-      "9df5159f-0641-42b1-8873-dd6ab94623d3": {
-        "id": "9df5159f-0641-42b1-8873-dd6ab94623d3",
-        "parent": "bc290282-e7eb-404a-b640-97bf4e57d8a8",
+      "ac92a9c2-3091-4cf3-8e8e-d09467a95392": {
+        "id": "ac92a9c2-3091-4cf3-8e8e-d09467a95392",
+        "parent": "d3549ce0-3b4e-4201-beb5-c4ee72b49895",
         "name": "lambda.js",
         "type": "LAMBDA_FILE",
         "isDirectory": false,
         "children": [],
         "isRemovable": true,
         "filePath": "t/lambda.js",
-        "code": "let AWS = require('aws-sdk');\n\nexports.handler = function (event, context, callback) {\n//\n    callback(null, { \"message\": \"Successfully executed\" });\n}",
-        "triggers": [],
+        "code": "exports.handler = function(event, context, callback) {\n    \n    callback(null, {\"message\": \"Successfully executed\"});\n}",
+        "triggers": [
+          {
+            "resourceName": "sqsanomalyDetectionQueue",
+            "config": {
+              "BatchSize": "03.34"
+            }
+          }
+        ],
         "config": {
           "runtime": "nodejs8.10",
+          "handler": "handler",
           "timeout": 60,
-          "memory": 128
+          "memory": 128,
+          "layers": []
+        },
+        "testCases": {
+          "cae2e4c8-8fe9-4794-8eea-9196f785e816": {
+            "id": "cae2e4c8-8fe9-4794-8eea-9196f785e816",
+            "name": "Unnamed event",
+            "functionId": "ac92a9c2-3091-4cf3-8e8e-d09467a95392",
+            "event": "{\n    \"key1\": \"value1\",\n    \"key2\": \"value2\",\n    \"key3\": \"value3\"\n}"
+          }
         }
       }
     },
     "deletedFiles": [],
-    "rootNode": "bc290282-e7eb-404a-b640-97bf4e57d8a8",
+    "rootNode": "d3549ce0-3b4e-4201-beb5-c4ee72b49895",
     "openFiles": [
-      "9df5159f-0641-42b1-8873-dd6ab94623d3"
+      "ac92a9c2-3091-4cf3-8e8e-d09467a95392"
     ],
-    "currentFileId": "9df5159f-0641-42b1-8873-dd6ab94623d3",
-    "resources": {},
+    "currentFileId": "ac92a9c2-3091-4cf3-8e8e-d09467a95392",
+    "resources": {
+      "sqsanomalyDetectionQueue": {
+        "name": "sqsanomalyDetectionQueue",
+        "type": "SQS",
+        "config": {
+          "mode": 1,
+          "existing": true,
+          "name": "anomalyDetectionQueue",
+          "url": "https://sqs.us-east-1.amazonaws.com/318300609668/anomalyDetectionQueue",
+          "selectedRegion": "us-east-1",
+          "deliveryDelay": "0",
+          "deliveryDelayUnit": "seconds",
+          "queueType": "standardQueue",
+          "defaultVisibilityTimeout": "30",
+          "defaultVisibilityTimeoutUnit": "seconds",
+          "messageRetentionPeriod": "345600",
+          "messageRetentionPeriodUnit": "seconds",
+          "maximumMessageSize": 256,
+          "receiveMessageWaitTime": "0",
+          "queueARN": "arn:aws:sqs:us-east-1:318300609668:anomalyDetectionQueue"
+        },
+        "globallyEditable": false
+      }
+    },
+    "customTemplate": {
+      "dialect": null,
+      "definitions": {}
+    },
     "envVariables": [
       {
         "lambdaId": "all",
@@ -50,8 +94,7 @@
     ],
     "packageJSON": {
       "dependencies": {}
-    },
-    "lambdaId": "9df5159f-0641-42b1-8873-dd6ab94623d3"
+    }
   },
   "PROJECT_META": {
     "projectName": "t",
@@ -59,7 +102,8 @@
     "projectVersion": "1.0.0",
     "projectRegion": "us-east-1",
     "platform": "AWS",
-    "lastSave": 1541420028870
+    "platformRegions": {},
+    "lastSave": 1552457873254
   },
   "VCS_STATE": {
     "provider": "GitHub",
