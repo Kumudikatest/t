@@ -27,20 +27,14 @@
           {
             "resourceName": "sqsanomalyDetectionQueue",
             "config": {
-              "BatchSize": "03.34"
-            }
-          },
-          {
-            "resourceName": "sqsk",
-            "config": {
-              "BatchSize": "1"
+              "BatchSize": "10"
             }
           }
         ],
         "config": {
           "runtime": "nodejs8.10",
           "handler": "handler",
-          "timeout": 60,
+          "timeout": 30,
           "memory": 128,
           "layers": []
         },
@@ -82,33 +76,6 @@
           "queueARN": "arn:aws:sqs:us-east-1:318300609668:anomalyDetectionQueue"
         },
         "globallyEditable": false
-      },
-      "sqsk": {
-        "name": "sqsk",
-        "type": "SQS",
-        "config": {
-          "mode": 0,
-          "existing": false,
-          "name": "k",
-          "url": "https://sqs.us-east-1.amazonaws.com/318300609668/k",
-          "selectedRegion": "us-east-1",
-          "deliveryDelay": 0,
-          "deliveryDelayUnit": "seconds",
-          "useRedrivePolicy": false,
-          "useSSE": false,
-          "kmsCustomerMasterKey": "default",
-          "accountId": "318300609668",
-          "dataKeyReusePeriod": 5,
-          "queueType": "standardQueue",
-          "defaultVisibilityTimeout": "60",
-          "defaultVisibilityTimeoutUnit": "seconds",
-          "messageRetentionPeriod": 4,
-          "messageRetentionPeriodUnit": "days",
-          "maximumMessageSize": 256,
-          "receiveMessageWaitTime": 0,
-          "deadLetterQueueName": ""
-        },
-        "globallyEditable": true
       }
     },
     "customTemplate": {
@@ -136,7 +103,7 @@
     "projectRegion": "us-east-1",
     "platform": "AWS",
     "platformRegions": {},
-    "lastSave": 1552458810358
+    "lastSave": 1552465513532
   },
   "VCS_STATE": {
     "provider": "GitHub",
