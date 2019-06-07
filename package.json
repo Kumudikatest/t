@@ -1,6 +1,8 @@
 {
   "name": "t",
   "version": "1.0.0",
-  "dependencies": {},
+  "dependencies": {
+    "googleapis": "29.0.0"
+  },
   "devDependencies": {}
 }

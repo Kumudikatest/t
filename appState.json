@@ -1,28 +1,29 @@
 {
   "EDITOR_STATE": {
     "allProjectFiles": {
-      "0ed245ba-ddd0-4843-9622-05de37cd4cc5": {
-        "id": "0ed245ba-ddd0-4843-9622-05de37cd4cc5",
+      "5b9894bd-3515-4aaf-92b6-f40f5150df89": {
+        "id": "5b9894bd-3515-4aaf-92b6-f40f5150df89",
         "parent": null,
         "name": "t",
         "type": "DIRECTORY",
         "isDirectory": true,
         "children": [
-          "b5f0fcb5-4d22-4e9d-ada9-56dad15bb07c"
+          "321719d5-0fbe-459b-850d-01a2462c419f",
+          "c1af19e5-cc2f-451c-81c0-7a20d98a419b"
         ],
         "isRemovable": false,
         "filePath": "t"
       },
-      "b5f0fcb5-4d22-4e9d-ada9-56dad15bb07c": {
-        "id": "b5f0fcb5-4d22-4e9d-ada9-56dad15bb07c",
-        "parent": "0ed245ba-ddd0-4843-9622-05de37cd4cc5",
+      "321719d5-0fbe-459b-850d-01a2462c419f": {
+        "id": "321719d5-0fbe-459b-850d-01a2462c419f",
+        "parent": "5b9894bd-3515-4aaf-92b6-f40f5150df89",
         "name": "lambda.js",
         "type": "JS_LAMBDA",
         "isDirectory": false,
         "children": [],
         "isRemovable": true,
         "filePath": "t/lambda.js",
-        "code": "exports.handler = function(event, context, callback) {\n    \n    callback(null, {\"message\": \"Successfully executed\"});\n}",
+        "code": "let google = require('googleapis').google;\nlet _auth = require('./Authorizer');\nconst datastore = google.datastore('v1');\n\nexports.handler = function (event, context, callback) {\n    datastore.projects.beginTransaction({\n        projectId: process.env.GCP_PROJECT,\n        resource: {\n            transactionOptions: {\n                readWrite: {}\n            }\n        }\n    }).then(response => {\n        console.log(response.data);           // successful response\n        /*\n        response.data = {\n            \"transaction\": \"<transaction ID>\"\n        }\n        */\n    })\n        .catch(err => {\n            console.log(err, err.stack); // an error occurred\n        });\n\n    callback(null, { \"message\": \"Successfully executed\" });\n}",
         "config": {
           "runtime": "nodejs8.10",
           "handler": "handler",
@@ -30,82 +31,31 @@
           "memory": 128,
           "layers": []
         },
-        "triggers": [
-          {
-            "resourceName": "apigusEast1TestAPIany",
-            "config": {}
-          },
-          {
-            "resourceName": "apigusEast1TestAPIget",
-            "config": {}
-          }
-        ]
+        "triggers": []
+      },
+      "c1af19e5-cc2f-451c-81c0-7a20d98a419b": {
+        "id": "c1af19e5-cc2f-451c-81c0-7a20d98a419b",
+        "parent": "5b9894bd-3515-4aaf-92b6-f40f5150df89",
+        "name": "Authorizer.js",
+        "type": "JS_FILE",
+        "isDirectory": false,
+        "children": [],
+        "isRemovable": true,
+        "filePath": "t/Authorizer.js",
+        "code": "const google = require(\"googleapis\").google;\n\nconst key = JSON.parse(process.env.GCP_SERVICE_ACCOUNT_KEY);\nconst jwtClient = new google.auth.JWT({\n    email: key.client_email,\n    key: key.private_key,\n    scopes: [\"https://www.googleapis.com/auth/cloud-platform\"]\n});\n\ngoogle.options({auth: jwtClient, project: process.env.GCP_PROJECT});"
       }
     },
     "deletedFiles": [],
-    "rootNode": "0ed245ba-ddd0-4843-9622-05de37cd4cc5",
+    "rootNode": "5b9894bd-3515-4aaf-92b6-f40f5150df89",
     "openFiles": [
-      "b5f0fcb5-4d22-4e9d-ada9-56dad15bb07c"
+      "321719d5-0fbe-459b-850d-01a2462c419f"
     ],
-    "currentFileId": "b5f0fcb5-4d22-4e9d-ada9-56dad15bb07c",
+    "currentFileId": "321719d5-0fbe-459b-850d-01a2462c419f",
     "resources": {
-      "apigusEast1TestAPIany": {
-        "name": "apigusEast1TestAPIany",
-        "type": "API_GATEWAY",
-        "config": {
-          "selectedRegion": "us-east-1",
-          "apiMode": 1,
-          "apiName": "TestAPI",
-          "apiId": "0itznun7w3",
-          "endpointType": "EDGE",
-          "rootResourceId": "h2lelj6j7k",
-          "existingResources": {
-            "/MyLambda": "98nqbj",
-            "/": "h2lelj6j7k",
-            "/testtwospeciallambda": "q4szm3",
-            "/testtwospecialkumutest": "wey3lk"
-          },
-          "resourceMode": 1,
-          "resourcePath": "/",
-          "resourceName": "",
-          "resourceId": "h2lelj6j7k",
-          "restMethod": "ANY",
-          "proxyIntegration": false,
-          "enableCORS": false,
-          "stageMode": 1,
-          "stageName": "socks",
-          "stageDeploymentId": "03eija",
-          "mode": 1
-        }
-      },
-      "apigusEast1TestAPIget": {
-        "name": "apigusEast1TestAPIget",
-        "type": "API_GATEWAY",
-        "config": {
-          "selectedRegion": "us-east-1",
-          "apiMode": 1,
-          "apiName": "TestAPI",
-          "apiId": "0itznun7w3",
-          "endpointType": "EDGE",
-          "rootResourceId": "h2lelj6j7k",
-          "existingResources": {
-            "/MyLambda": "98nqbj",
-            "/": "h2lelj6j7k",
-            "/testtwospeciallambda": "q4szm3",
-            "/testtwospecialkumutest": "wey3lk"
-          },
-          "resourceMode": 1,
-          "resourcePath": "/",
-          "resourceName": "",
-          "resourceId": "h2lelj6j7k",
-          "restMethod": "GET",
-          "proxyIntegration": false,
-          "enableCORS": false,
-          "stageMode": 1,
-          "stageName": "Test",
-          "stageDeploymentId": "xncpym",
-          "mode": 1
-        }
+      "datastore": {
+        "name": "datastore",
+        "type": "datastore",
+        "config": {}
       }
     },
     "customTemplate": {
@@ -120,10 +70,34 @@
         "shouldPersist": false,
         "displayOnly": false,
         "editable": false
+      },
+      {
+        "lambdaId": "all",
+        "varKey": "GCP_SERVICE_ACCOUNT_KEY",
+        "varValue": null,
+        "shouldPersist": false,
+        "displayOnly": false,
+        "editable": false
+      },
+      {
+        "lambdaId": "all",
+        "varKey": "GCP_PROJECT",
+        "varValue": null,
+        "shouldPersist": false,
+        "displayOnly": false,
+        "editable": false
       }
     ],
     "packageJSON": {
-      "dependencies": {}
+      "dependencies": {
+        "googleapis": {
+          "name": "googleapis",
+          "language": "javascript",
+          "version": "29.0.0",
+          "dev": false,
+          "notRemovable": false
+        }
+      }
     }
   },
   "PROJECT_META": {
@@ -133,7 +107,7 @@
     "projectRegion": "us-east-1",
     "platform": "AWS",
     "platformRegions": {},
-    "lastSave": 1559891503324
+    "lastSave": 1559911204468
   },
   "VCS_STATE": {
     "provider": "GitHub",
