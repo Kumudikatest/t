@@ -1,83 +1,45 @@
 {
   "EDITOR_STATE": {
     "allProjectFiles": {
-      "d3549ce0-3b4e-4201-beb5-c4ee72b49895": {
-        "id": "d3549ce0-3b4e-4201-beb5-c4ee72b49895",
+      "0ed245ba-ddd0-4843-9622-05de37cd4cc5": {
+        "id": "0ed245ba-ddd0-4843-9622-05de37cd4cc5",
         "parent": null,
         "name": "t",
         "type": "DIRECTORY",
         "isDirectory": true,
         "children": [
-          "ac92a9c2-3091-4cf3-8e8e-d09467a95392"
+          "b5f0fcb5-4d22-4e9d-ada9-56dad15bb07c"
         ],
         "isRemovable": false,
         "filePath": "t"
       },
-      "ac92a9c2-3091-4cf3-8e8e-d09467a95392": {
-        "id": "ac92a9c2-3091-4cf3-8e8e-d09467a95392",
-        "parent": "d3549ce0-3b4e-4201-beb5-c4ee72b49895",
+      "b5f0fcb5-4d22-4e9d-ada9-56dad15bb07c": {
+        "id": "b5f0fcb5-4d22-4e9d-ada9-56dad15bb07c",
+        "parent": "0ed245ba-ddd0-4843-9622-05de37cd4cc5",
         "name": "lambda.js",
-        "type": "LAMBDA_FILE",
+        "type": "JS_LAMBDA",
         "isDirectory": false,
         "children": [],
         "isRemovable": true,
         "filePath": "t/lambda.js",
-        "code": "exports.handler = function(event, context, callback) {\n    \n    callback(null, {\"message\": \"Successfully executed\"});\n}\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n",
-        "triggers": [
-          {
-            "resourceName": "sqsanomalyDetectionQueue",
-            "config": {
-              "BatchSize": "10"
-            }
-          }
-        ],
+        "code": "exports.handler = function(event, context, callback) {\n    \n    callback(null, {\"message\": \"Successfully executed\"});\n}",
         "config": {
           "runtime": "nodejs8.10",
           "handler": "handler",
-          "timeout": 30,
+          "timeout": 60,
           "memory": 128,
           "layers": []
         },
-        "testCases": {
-          "cae2e4c8-8fe9-4794-8eea-9196f785e816": {
-            "id": "cae2e4c8-8fe9-4794-8eea-9196f785e816",
-            "name": "Unnamed event",
-            "functionId": "ac92a9c2-3091-4cf3-8e8e-d09467a95392",
-            "event": "{\n    \"key1\": \"value1\",\n    \"key2\": \"value2\",\n    \"key3\": \"value3\"\n}"
-          }
-        }
+        "triggers": []
       }
     },
     "deletedFiles": [],
-    "rootNode": "d3549ce0-3b4e-4201-beb5-c4ee72b49895",
+    "rootNode": "0ed245ba-ddd0-4843-9622-05de37cd4cc5",
     "openFiles": [
-      "ac92a9c2-3091-4cf3-8e8e-d09467a95392"
+      "b5f0fcb5-4d22-4e9d-ada9-56dad15bb07c"
     ],
-    "currentFileId": "ac92a9c2-3091-4cf3-8e8e-d09467a95392",
-    "resources": {
-      "sqsanomalyDetectionQueue": {
-        "name": "sqsanomalyDetectionQueue",
-        "type": "SQS",
-        "config": {
-          "mode": 1,
-          "existing": true,
-          "name": "anomalyDetectionQueue",
-          "url": "https://sqs.us-east-1.amazonaws.com/318300609668/anomalyDetectionQueue",
-          "selectedRegion": "us-east-1",
-          "deliveryDelay": "0",
-          "deliveryDelayUnit": "seconds",
-          "queueType": "standardQueue",
-          "defaultVisibilityTimeout": "30",
-          "defaultVisibilityTimeoutUnit": "seconds",
-          "messageRetentionPeriod": "345600",
-          "messageRetentionPeriodUnit": "seconds",
-          "maximumMessageSize": 256,
-          "receiveMessageWaitTime": "0",
-          "queueARN": "arn:aws:sqs:us-east-1:318300609668:anomalyDetectionQueue"
-        },
-        "globallyEditable": false
-      }
-    },
+    "currentFileId": "b5f0fcb5-4d22-4e9d-ada9-56dad15bb07c",
+    "resources": {},
     "customTemplate": {
       "dialect": null,
       "definitions": {}
@@ -103,7 +65,7 @@
     "projectRegion": "us-east-1",
     "platform": "AWS",
     "platformRegions": {},
-    "lastSave": 1552465513532
+    "lastSave": 1559889679945
   },
   "VCS_STATE": {
     "provider": "GitHub",
