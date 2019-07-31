@@ -2,5 +2,7 @@
   "name": "t",
   "version": "1.0.0",
   "dependencies": {},
-  "devDependencies": {}
+  "devDependencies": {
+    "aws-sdk": "2.176.0"
+  }
 }
